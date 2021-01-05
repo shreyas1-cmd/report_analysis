@@ -28,13 +28,13 @@ if st.button('Predict'):
 
 csv_file = 'data/file_information.csv'
 plagiarism_df = pd.read_csv(csv_file)
-def numerical_dataframe(csv_file='data/file_information.csv'):
+def numerical_dataframe(csv_file='file_information.csv'):
     df = pd.read_csv(csv_file)
     df.loc[:,'Class'] =  df.loc[:,'Category'].map({'non': 0, 'heavy': 1, 'light': 1, 'cut': 1, 'orig': -1})
     df.loc[:,'Category'] =  df.loc[:,'Category'].map({'non': 0, 'heavy': 1, 'light': 2, 'cut': 3, 'orig': -1})
     return df
 
-transformed_df = numerical_dataframe(csv_file ='data/file_information.csv')
+transformed_df = numerical_dataframe(csv_file ='file_information.csv')
 import re
 import operator
 
@@ -107,7 +107,7 @@ import numpy as np
 import pandas as pd
 import re
 
-TEST_CSV = 'data/test_info.csv'
+TEST_CSV = 'test_info.csv'
 
 class AssertTest(object):
     '''Defines general test behavior.'''
@@ -384,12 +384,12 @@ def model_fn(model_dir):
     model = joblib.load(os.path.join(model_dir, "model.joblib"))
     return model
 
-train_data = pd.read_csv('/content/plagiarism_data/train.csv',header=None,names=None)
+train_data = pd.read_csv('plagiarism_data/train.csv',header=None,names=None)
 X_train = train_data.iloc[:,1:].values
 y_train = train_data.iloc[:,0].values
 model = LinearSVC()
 model.fit(train_x, train_y)
-test_data = pd.read_csv('/content/plagiarism_data/test.csv', header=None, names=None)
+test_data = pd.read_csv('plagiarism_data/test.csv', header=None, names=None)
 y_test = test_data.iloc[:,0]
 X_test = test_data.iloc[:,1:]
 y_pred = model.predict(X_test)
