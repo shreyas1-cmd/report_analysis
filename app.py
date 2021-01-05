@@ -7,15 +7,16 @@ Original file is located at
     https://colab.research.google.com/drive/14TTpj_aWYUuVl5u7Mm8mdYCgiMughCt9
 """
 
-!pip install streamlit
+#!pip install streamlit
 
-!wget https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c4147f9_data/data.zip
-!unzip data
+#!wget https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c4147f9_data/data.zip
+#!unzip data
 
 import streamlit as st
 import pandas as pd
 import numpy as np
 import os
+from difflib import SequenceMatcher
 st.title("Report Analysis")
 st.subheader('Count Vectorizer')
 st.write('This project is based on Linear SVC classifier')
@@ -35,7 +36,6 @@ def numerical_dataframe(csv_file='data/file_information.csv'):
 
 transformed_df = numerical_dataframe(csv_file ='data/file_information.csv')
 import re
-import pandas as pd
 import operator
 
 def create_datatype(df, train_value, test_value, datatype_var, compare_dfcolumn, operator_of_compare, value_of_compare,
@@ -396,11 +396,4 @@ y_pred = model.predict(X_test)
 
 df = pd.concat([pd.DataFrame(X_test), pd.DataFrame(y_test), pd.DataFrame(y_pred)], axis=1)
 df.columns=['c_1', 'c_11', 'lcs_word', 'class', 'predicted']
-
-from difflib import SequenceMatcher
-d1 = open('/content/data/g0pD_taska.txt','r')
-d1_1 = d1.read()
-d2 = open('/content/data/orig_taska.txt','r')
-d2_1 = d2.read()
-similarity_ratio = SequenceMatcher(None,d1_1,d2_1).ratio()
 
