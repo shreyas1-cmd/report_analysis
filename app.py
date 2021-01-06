@@ -26,7 +26,7 @@ if st.button('Predict'):
   s = SequenceMatcher(None,message,message_1).ratio()
   st.title(s)
 
-csv_file = 'data/file_information.csv'
+csv_file = 'file_information.csv'
 plagiarism_df = pd.read_csv(csv_file)
 def numerical_dataframe(csv_file='file_information.csv'):
     df = pd.read_csv(csv_file)
