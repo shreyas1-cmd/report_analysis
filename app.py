@@ -377,7 +377,7 @@ make_csv(test_x, test_y, filename='test.csv', data_dir=data_dir)
 import argparse
 import os
 import pandas as pd
-from sklearn.externals import joblib
+import joblib
 from sklearn.svm import LinearSVC
 
 def model_fn(model_dir):
