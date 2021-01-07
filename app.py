@@ -22,11 +22,6 @@ st.subheader('Count Vectorizer')
 st.write('This project is based on Linear SVC classifier')
 message = st.text_area("Original Text","Enter text here..")
 message_1 = st.text_area("Possible Copied Text","Enter text here..")
-if st.button('Predict'):
-  s = SequenceMatcher(None,message,message_1).ratio()
-  a = lcs_norm_word(message_1,message)
-  st.title(s)
-  st.title(a)
 
 csv_file = 'file_information.csv'
 plagiarism_df = pd.read_csv(csv_file)
@@ -398,4 +393,8 @@ y_pred = model.predict(X_test)
 
 df = pd.concat([pd.DataFrame(X_test), pd.DataFrame(y_test), pd.DataFrame(y_pred)], axis=1)
 df.columns=['c_1', 'c_11', 'lcs_word', 'class', 'predicted']
-
+if st.button('Predict'):
+  s = SequenceMatcher(None,message,message_1).ratio()
+  a = lcs_norm_word(message,message_1)
+  st.title(s)
+  st.title(a)
