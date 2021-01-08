@@ -396,11 +396,7 @@ df.columns=['c_1', 'c_11', 'lcs_word', 'class', 'predicted']
 if st.button('Predict'):
   s = SequenceMatcher(None,message,message_1).ratio()
   a = lcs_norm_word(message,message_1)
-  b = model.predict([[message_1]])
-  if b == 1:
-    st.title('plagiarized text')
-  else:
-    st.title('non-plagiarized text')
-     
+  st.title('Model 1')
   st.title(s)
+  st.title('Model 2')
   st.title(a)
